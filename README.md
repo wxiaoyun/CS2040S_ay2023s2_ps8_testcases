@@ -13,7 +13,7 @@ This repository is solely meant for NUS Students who are taking CS2040S. The pur
 
 ### Alternatively, you can use Git to clone the repository
 
-´git clone https://github.com/your-repo-link´
+´git clone https://github.com/ForAeons/CS2040S_ay2023s2_ps8_testcases.git´
 
 ## How to Contribute
 
@@ -29,7 +29,7 @@ Wait for the maintainer to review and accept the merge request.
 
 ### Email Contribution
 
-If you prefer not to use the fork and merge request method, you can send your email to the me and I will invite you to be a contributor. You can push changes directly to the repositary.
+If you prefer not to use the fork and merge request method, you can send your email to the me and I will invite you to be a contributor. You can push changes directly to the repository.
 
 ## Description
 
