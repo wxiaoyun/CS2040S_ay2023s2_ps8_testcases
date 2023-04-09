@@ -67,7 +67,7 @@ public class TSPGraphTester {
   }
 
   /**
-   * @author Wu Xiaoyun
+   * @author Xiaoyun
    */
   @Test
   public void testTimeComplexityTSP() {

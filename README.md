@@ -3,11 +3,12 @@
 This repository is solely meant for NUS students who are taking CS2040S. The purpose of this
 repository is to provide a test file for students' implementation of TSPGraph.java.
 
+## Important Note for Test Files
+
 1. Note that time complexity tests does not test for the correctness of the algorithm. It only tests for the time complexity of the algorithm.
 2. Time complexity test for MST and TSP can run for a long time. It took 1 minute plus for each of them on my PC. You can comment out the time complexity test for 10000 input size if you want to run the test faster. However, to better analyze time complexity, you should perform more tests with larger input sizes (the 10000 one) and observe if the time growth trends towards the expected O(n^2 \* log n) complexity.
-3. Time complexity test for isValidTour and tourDistance can occasionally give false negatives due to the randomness of timing recorded. But 9/10 times your code should pass the test. If you are sure that your code is correct, you can comment out the time complexity test for these two methods.
 
-Sample output of the test file:
+Sample output of the MST TSP test:
 | Test | Time taken/s | Expected time growth | Actual time growth |
 | ---- | ------------ | -------------------- | ------------------ |
 | 1 | 0.016115100 | 5.204120 | 1.118196 |
@@ -49,6 +50,8 @@ Sample output of the test file:
 ```bash
 git clone https://github.com/ForAeons/CS2040S_ay2023s2_ps8_testcases.git
 ```
+
+### Or, you can click on the test files, click on "Raw", Ctrl-A, Ctrl-C and Ctrl-V into your IDE
 
 ## How to Contribute
 
