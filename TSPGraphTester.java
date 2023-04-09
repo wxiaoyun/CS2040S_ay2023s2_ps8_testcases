@@ -30,7 +30,14 @@ public class TSPGraphTester {
 						"10000points.txt",
 				};
 				
-				int[] inputSizes = {10, 20, 50, 100, 1000, 10000};
+				int[] inputSizes = {
+						10,
+						20,
+						50,
+						100,
+						1000,
+						10000,
+				};
 				
 				TSPGraph graph = new TSPGraph();
 				
@@ -59,7 +66,7 @@ public class TSPGraphTester {
 						// You may want to use a tolerance value to account for small variations in time measurements
 						double tolerance = 0.25;
 						double upperBound = expectedTimeGrowth * (1 + tolerance);
-						System.out.printf("Test %d:\nTime taken: %.9f\nExpected time growth: %f\nActual time " +
+						System.out.printf("Test %d:\nTime taken: %.7f\nExpected time growth: %f\nActual time " +
 										"growth: " +
 										"%f%n",
 								i, times[i] / 1_000_000_000.0, expectedTimeGrowth, actualTimeGrowth);
@@ -83,7 +90,14 @@ public class TSPGraphTester {
 						"10000points.txt",
 				};
 				
-				int[] inputSizes = {10, 20, 50, 100, 1000, 10000};
+				int[] inputSizes = {
+						10,
+						20,
+						50,
+						100,
+						1000,
+						10000,
+				};
 				
 				TSPGraph graph = new TSPGraph();
 				
@@ -112,7 +126,7 @@ public class TSPGraphTester {
 						// You may want to use a tolerance value to account for small variations in time measurements
 						double tolerance = 0.25;
 						double upperBound = expectedTimeGrowth * (1 + tolerance);
-						System.out.printf("Test %d:\nTime taken: %.9f\nExpected time growth: %f\nActual time " +
+						System.out.printf("Test %d:\nTime taken: %.7f\nExpected time growth: %f\nActual time " +
 										"growth: " +
 										"%f%n",
 								i, times[i] / 1_000_000_000.0, expectedTimeGrowth, actualTimeGrowth);
@@ -284,11 +298,57 @@ public class TSPGraphTester {
 						// You may want to use a tolerance value to account for small variations in time measurements
 						double tolerance = 1;
 						double upperBound = expectedTimeGrowth * (1 + tolerance);
-						System.out.printf("Test %d:\nTime taken: %.9f\nExpected time growth: %f\nActual time " +
+						System.out.printf("Test %d:\nTime taken: %.7f\nExpected time growth: %f\nActual time " +
 										"growth: " +
 										"%f%n",
 								i, times[i] / 1_000_000_000.0, expectedTimeGrowth, actualTimeGrowth);
 						assertTrue("Time complexity is worse than O(n)", actualTimeGrowth <= upperBound);
+				}
+		}
+		
+		/**
+			* @author Xiaoyun
+			*/
+		@Test
+		public void testEarlyTerminationIsValidTour() {
+				testFileGenerator.generateNPointsFile(100, 1000);
+				testFileGenerator.generateNPointsFile(100, 10000);
+				String[] inputFiles = {
+						"tenpoints.txt",
+						"twentypoints.txt",
+						"fiftypoints.txt",
+						"hundredpoints.txt",
+						"1000points.txt",
+						"10000points.txt",
+				};
+				
+				int[] inputSizes = {10, 20, 50, 100, 1000, 10000};
+				
+				TSPGraph graph = new TSPGraph();
+				
+				// Tolerance value to account for small variations in time measurements
+				double tolerance = 1;
+				Double initialTime = null;
+				
+				for (int i = 0; i < inputSizes.length; i++) {
+						int inputSize = inputSizes[i];
+						TSPMap map = new TSPMap(inputFiles[i]);
+						
+						// Measure the time taken for the function with the given input size
+						long startTime = System.nanoTime();
+						graph.isValidTour(map);
+						long endTime = System.nanoTime();
+						double timeInSeconds = (endTime - startTime) / 1_000_000_000.0;
+						
+						System.out.printf("Input size: %d, Time taken: %.7f seconds%n", inputSize, timeInSeconds);
+						
+						// Check if the time taken is within the tolerance range of the initial time measurement
+						if (i == 0) {
+								initialTime = timeInSeconds;
+						} else {
+								double upperBound = initialTime * (1 + tolerance);
+								assertTrue("Time complexity is not constant", timeInSeconds <= upperBound);
+						}
 				}
 		}
 		
@@ -414,11 +474,57 @@ public class TSPGraphTester {
 						// You may want to use a tolerance value to account for small variations in time measurements
 						double tolerance = 1;
 						double upperBound = expectedTimeGrowth * (1 + tolerance);
-						System.out.printf("Test %d:\nTime taken: %.9f\nExpected time growth: %f\nActual time " +
+						System.out.printf("Test %d:\nTime taken: %.7f\nExpected time growth: %f\nActual time " +
 										"growth: " +
 										"%f%n",
 								i, times[i] / 1_000_000_000.0, expectedTimeGrowth, actualTimeGrowth);
 						assertTrue("Time complexity is worse than O(n)", actualTimeGrowth <= upperBound);
+				}
+		}
+		
+		/**
+			* @author Xiaoyun
+			*/
+		@Test
+		public void testEarlyTerminationTourDistance() {
+				testFileGenerator.generateNPointsFile(100, 1000);
+				testFileGenerator.generateNPointsFile(100, 10000);
+				String[] inputFiles = {
+						"tenpoints.txt",
+						"twentypoints.txt",
+						"fiftypoints.txt",
+						"hundredpoints.txt",
+						"1000points.txt",
+						"10000points.txt",
+				};
+				
+				int[] inputSizes = {10, 20, 50, 100, 1000, 10000};
+				
+				TSPGraph graph = new TSPGraph();
+				
+				// Tolerance value to account for small variations in time measurements
+				double tolerance = 1;
+				Double initialTime = null;
+				
+				for (int i = 0; i < inputSizes.length; i++) {
+						int inputSize = inputSizes[i];
+						TSPMap map = new TSPMap(inputFiles[i]);
+						
+						// Measure the time taken for the function with the given input size
+						long startTime = System.nanoTime();
+						graph.tourDistance(map);
+						long endTime = System.nanoTime();
+						double timeInSeconds = (endTime - startTime) / 1_000_000_000.0;
+						
+						System.out.printf("Input size: %d, Time taken: %.7f seconds%n", inputSize, timeInSeconds);
+						
+						// Check if the time taken is within the tolerance range of the initial time measurement
+						if (i == 0) {
+								initialTime = timeInSeconds;
+						} else {
+								double upperBound = initialTime * (1 + tolerance);
+								assertTrue("Time complexity is not constant", timeInSeconds <= upperBound);
+						}
 				}
 		}
 		

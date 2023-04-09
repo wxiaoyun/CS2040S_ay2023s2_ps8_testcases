@@ -21,10 +21,8 @@ public class testFileGenerator {
     String fileName = numberOfPoints + "points.txt";
     // Check if the file already exists
     File file = new File(fileName);
-    if (file.exists()) {
-      System.out.println(fileName + " already exists.");
-      return;
-    }
+    if (file.exists()) return;
+    
 
     try {
       FileWriter fileWriter = new FileWriter(fileName);
