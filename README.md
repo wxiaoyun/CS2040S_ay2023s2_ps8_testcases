@@ -15,6 +15,24 @@ repository is to provide a test file for students' implementation of TSPGraph.ja
 | 4    | 0.886404600  | 150.000000           | 12.063439          |
 | 5    | 74.282491200 | 133.333333           | 83.802015          |
 
+## Tips
+0. Make sure you have not modified the 2 pre-uploaded files on Coursemology.
+These are IApproximateTSP and TSPMap.
+1. The distance is a double.
+When you handle edge weights, make sure you're not assuming it's an integer. This can be particularly important when you compare edge weights.
+2. The link you set is a directed link. 
+If you do map.setLink(i, j), you have set a link from i to j. j is not linked to i.
+3. Each node can only direct 1 link.
+Make sure you're not setting multiple links on one node. Only the most recent link will be remembered.
+4. Is your Priority Queue implementation faulty?
+If you used your own priority queue, it may be prone to some errors. The provided TreeMapPriorityQueue should not have any issues and can be treated as a black box.
+5. Have you remembered to call MST first before TSP?
+TSP(map) must call MST(map), before doing anything. 
+6. isValidTour and tourDistance infinite loop cases
+Have you accounted for the possible test cases? These include a figure 6 graph, a loop involving all points, a singly linked list, and unconnected nodes as well.
+7. You should not be calling MST() or TSP() before isValidTour and tourDistance.
+You are supposed to work with a given graph and not process and modify it.
+
 ## How to Download
 
 ### To download the repository, follow these steps
