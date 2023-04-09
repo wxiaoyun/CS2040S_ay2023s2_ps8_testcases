@@ -13,7 +13,9 @@ This repository is solely meant for NUS Students who are taking CS2040S. The pur
 
 ### Alternatively, you can use Git to clone the repository
 
-´git clone https://github.com/ForAeons/CS2040S_ay2023s2_ps8_testcases.git´
+```bash
+git clone https://github.com/ForAeons/CS2040S_ay2023s2_ps8_testcases.git
+```
 
 ## How to Contribute
 
