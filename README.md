@@ -1,7 +1,10 @@
 # Problem Set 8: Travelling Salesman Problem
 
-This repository is solely meant for NUS students who are taking CS2040S. The purpose of this 
+This repository is solely meant for NUS students who are taking CS2040S. The purpose of this
 repository is to provide a test file for students' implementation of TSPGraph.java.
+
+1. Note that time complexity tests does not test for the correctness of the algorithm. It only tests for the time complexity of the algorithm.
+2. Time complexity test for MST and TSP can run for a long time. It took 1 minute plus for each of them on my PC. You can comment out the time complexity test for 10000 input size if you want to run the test faster.
 
 ## How to Download
 
