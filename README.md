@@ -8,15 +8,13 @@ repository is to provide a test file for students' implementation of TSPGraph.ja
 3. Time complexity test for isValidTour and tourDistance can occasionally give false negatives due to the randomness of timing recorded. But 9/10 times your code should pass the test. If you are sure that your code is correct, you can comment out the time complexity test for these two methods.
 
 Sample output of the test file:
-
-````bash
 | Test | Time taken/s | Expected time growth | Actual time growth |
 | ---- | ------------ | -------------------- | ------------------ |
-| 1    | 0.016115100  | 5.204120             | 1.118196           |
-| 2    | 0.036478400  | 8.161659             | 2.263616           |
-| 3    | 0.073478600  | 4.708735             | 2.014304           |
-| 4    | 0.886404600  | 150.000000           | 12.063439          |
-| 5    | 74.282491200 | 133.333333           | 83.802015          |
+| 1 | 0.016115100 | 5.204120 | 1.118196 |
+| 2 | 0.036478400 | 8.161659 | 2.263616 |
+| 3 | 0.073478600 | 4.708735 | 2.014304 |
+| 4 | 0.886404600 | 150.000000 | 12.063439 |
+| 5 | 74.282491200 | 133.333333 | 83.802015 |
 
 ## Tips
 
@@ -50,7 +48,7 @@ Sample output of the test file:
 
 ```bash
 git clone https://github.com/ForAeons/CS2040S_ay2023s2_ps8_testcases.git
-````
+```
 
 ## How to Contribute
 
