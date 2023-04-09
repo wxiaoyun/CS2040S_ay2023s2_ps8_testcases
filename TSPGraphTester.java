@@ -27,7 +27,7 @@ public class TSPGraphTester {
 						"fiftypoints.txt",
 						"hundredpoints.txt",
 						"1000points.txt",
-						"10000points.txt",
+						//"10000points.txt",
 				};
 				
 				int[] inputSizes = {
@@ -36,7 +36,7 @@ public class TSPGraphTester {
 						50,
 						100,
 						1000,
-						10000,
+						//10000,
 				};
 				
 				TSPGraph graph = new TSPGraph();
@@ -87,7 +87,7 @@ public class TSPGraphTester {
 						"fiftypoints.txt",
 						"hundredpoints.txt",
 						"1000points.txt",
-						"10000points.txt",
+						//"10000points.txt",
 				};
 				
 				int[] inputSizes = {
@@ -96,7 +96,7 @@ public class TSPGraphTester {
 						50,
 						100,
 						1000,
-						10000,
+						//10000,
 				};
 				
 				TSPGraph graph = new TSPGraph();
@@ -425,6 +425,38 @@ public class TSPGraphTester {
 				
 				System.out.println("Tour distance: " + result);
 				assertEquals(expected, String.format("%.1f", result));
+		}
+		
+		/**
+			* @author Xiaoyun
+			*/
+		@Test
+		public void testTourDistance4() {
+				String[] inputFiles = {
+						"tenpoints.txt",
+						"twentypoints.txt",
+						"fiftypoints.txt",
+						"hundredpoints.txt",
+				};
+				
+				int[] inputSizes = {10, 20, 50, 100};
+				
+				String[] expected = {
+						"740.85868",
+						"938.36805",
+						"2318.49430",
+						"5686.74371",
+				};
+				
+				TSPGraph graph = new TSPGraph();
+				
+				for (int i = 0;	i < inputFiles.length; i++) {
+						TSPMap map = new TSPMap(inputFiles[i]);
+						createValidTour(map);
+						double result = graph.tourDistance(map);
+						System.out.printf("Input size: %d, Tour distance: %.5f%n", inputSizes[i], result);
+						assertEquals(expected[i], String.format("%.5f", result));
+				}
 		}
 		
 		

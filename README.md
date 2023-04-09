@@ -5,6 +5,7 @@ repository is to provide a test file for students' implementation of TSPGraph.ja
 
 1. Note that time complexity tests does not test for the correctness of the algorithm. It only tests for the time complexity of the algorithm.
 2. Time complexity test for MST and TSP can run for a long time. It took 1 minute plus for each of them on my PC. You can comment out the time complexity test for 10000 input size if you want to run the test faster. However, to better analyze time complexity, you should perform more tests with larger input sizes (the 10000 one) and observe if the time growth trends towards the expected O(n^2 \* log n) complexity.
+3. Time complexity test for isValidTour and tourDistance can occasionally give false negatives due to the randomness of timing recorded. But 9/10 times your code should pass the test. If you are sure that your code is correct, you can comment out the time complexity test for these two methods.
 
 | Test | Time taken   | Expected time growth | Actual time growth |
 | ---- | ------------ | -------------------- | ------------------ |
