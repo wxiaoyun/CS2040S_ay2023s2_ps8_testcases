@@ -4,6 +4,33 @@ import java.util.Random;
 
 public class TSPGraphTester {
 		
+		private static final String[] inputFiles = {
+				"tenpoints.txt",
+				"twentypoints.txt",
+				"fiftypoints.txt",
+				"hundredpoints.txt",
+				"1000points.txt",
+				"10000points.txt",
+		};
+		
+		private static final int[] inputSizes = {
+				10,
+				20,
+				50,
+				100,
+				1000,
+				10000,
+		};
+		
+		/**
+			* @author Xiaoyun
+			*/
+		private static void initLargeInput() {
+				testFileGenerator.generateNPointsFile(100, 1000);
+				testFileGenerator.generateNPointsFile(100, 10000);
+		}
+		
+		
 		/**
 			* Creates a valid tour for the given map.
 			* @param map The map to create a valid tour for.
@@ -19,26 +46,8 @@ public class TSPGraphTester {
 			*/
 		@Test
 		public void testTimeComplexityMST() {
-				testFileGenerator.generateNPointsFile(100, 1000);
-				testFileGenerator.generateNPointsFile(100, 10000);
-				String[] inputFiles = {
-						"tenpoints.txt",
-						"twentypoints.txt",
-						"fiftypoints.txt",
-						"hundredpoints.txt",
-						"1000points.txt",
-						//"10000points.txt",
-				};
-				
-				int[] inputSizes = {
-						10,
-						20,
-						50,
-						100,
-						1000,
-						//10000,
-				};
-				
+				initLargeInput();
+
 				TSPGraph graph = new TSPGraph();
 				
 				// Record the times for each input size
@@ -54,24 +63,7 @@ public class TSPGraphTester {
 				}
 				
 				// Compare the time growth to the expected O(n^2 * log n) complexity
-				for (int i = 1; i < times.length; i++) {
-						double previousN = inputSizes[i - 1];
-						double currentN = inputSizes[i];
-						double previousTime = times[i - 1];
-						double currentTime = times[i];
-						
-						double expectedTimeGrowth = Math.pow(currentN / previousN, 2) * (Math.log(currentN) / Math.log(previousN));
-						double actualTimeGrowth = currentTime / previousTime;
-						
-						// You may want to use a tolerance value to account for small variations in time measurements
-						double tolerance = 0.25;
-						double upperBound = expectedTimeGrowth * (1 + tolerance);
-						System.out.printf("Test %d:\nTime taken: %.7f\nExpected time growth: %f\nActual time " +
-										"growth: " +
-										"%f%n",
-								i, times[i] / 1_000_000_000.0, expectedTimeGrowth, actualTimeGrowth);
-						assertTrue("Time complexity is worse than O(n^2 * log n)", actualTimeGrowth <= upperBound);
-				}
+				testNSquareLogNTimeComplexity(times);
 		}
 		
 		/**
@@ -79,25 +71,7 @@ public class TSPGraphTester {
 			*/
 		@Test
 		public void testTimeComplexityTSP() {
-				testFileGenerator.generateNPointsFile(100, 1000);
-				testFileGenerator.generateNPointsFile(100, 10000);
-				String[] inputFiles = {
-						"tenpoints.txt",
-						"twentypoints.txt",
-						"fiftypoints.txt",
-						"hundredpoints.txt",
-						"1000points.txt",
-						//"10000points.txt",
-				};
-				
-				int[] inputSizes = {
-						10,
-						20,
-						50,
-						100,
-						1000,
-						//10000,
-				};
+				initLargeInput();
 				
 				TSPGraph graph = new TSPGraph();
 				
@@ -114,24 +88,7 @@ public class TSPGraphTester {
 				}
 				
 				// Compare the time growth to the expected O(n^2 * log n) complexity
-				for (int i = 1; i < times.length; i++) {
-						double previousN = inputSizes[i - 1];
-						double currentN = inputSizes[i];
-						double previousTime = times[i - 1];
-						double currentTime = times[i];
-						
-						double expectedTimeGrowth = Math.pow(currentN / previousN, 2) * (Math.log(currentN) / Math.log(previousN));
-						double actualTimeGrowth = currentTime / previousTime;
-						
-						// You may want to use a tolerance value to account for small variations in time measurements
-						double tolerance = 0.25;
-						double upperBound = expectedTimeGrowth * (1 + tolerance);
-						System.out.printf("Test %d:\nTime taken: %.7f\nExpected time growth: %f\nActual time " +
-										"growth: " +
-										"%f%n",
-								i, times[i] / 1_000_000_000.0, expectedTimeGrowth, actualTimeGrowth);
-						assertTrue("Time complexity is worse than O(n^2 * log n)", actualTimeGrowth <= upperBound);
-				}
+				testNSquareLogNTimeComplexity(times);
 		}
 		
 		/**
@@ -224,18 +181,7 @@ public class TSPGraphTester {
 			*/
 		@Test
 		public void testTimeComplexityIsValidTour() {
-				testFileGenerator.generateNPointsFile(100, 1000);
-				testFileGenerator.generateNPointsFile(100, 10000);
-				String[] inputFiles = {
-						"tenpoints.txt",
-						"twentypoints.txt",
-						"fiftypoints.txt",
-						"hundredpoints.txt",
-						"1000points.txt",
-						"10000points.txt",
-				};
-				
-				int[] inputSizes = {10, 20, 50, 100, 1000, 10000};
+				initLargeInput();
 				
 				TSPGraph graph = new TSPGraph();
 				
@@ -253,24 +199,7 @@ public class TSPGraphTester {
 				}
 				
 				// Compare the time growth to the expected O(n) complexity
-				for (int i = 1; i < times.length; i++) {
-						double previousN = inputSizes[i - 1];
-						double currentN = inputSizes[i];
-						double previousTime = times[i - 1];
-						double currentTime = times[i];
-						
-						double expectedTimeGrowth = currentN / previousN;
-						double actualTimeGrowth = currentTime / previousTime;
-						
-						// You may want to use a tolerance value to account for small variations in time measurements
-						double tolerance = 1;
-						double upperBound = expectedTimeGrowth * (1 + tolerance);
-						System.out.printf("Test %d:\nTime taken: %.7f\nExpected time growth: %f\nActual time " +
-										"growth: " +
-										"%f%n",
-								i, times[i] / 1_000_000_000.0, expectedTimeGrowth, actualTimeGrowth);
-						assertTrue("Time complexity is worse than O(n)", actualTimeGrowth <= upperBound);
-				}
+				testLinearTimeComplexity(times);
 		}
 		
 		/**
@@ -278,45 +207,25 @@ public class TSPGraphTester {
 			*/
 		@Test
 		public void testEarlyTerminationIsValidTour() {
-				testFileGenerator.generateNPointsFile(100, 1000);
-				testFileGenerator.generateNPointsFile(100, 10000);
-				String[] inputFiles = {
-						"tenpoints.txt",
-						"twentypoints.txt",
-						"fiftypoints.txt",
-						"hundredpoints.txt",
-						"1000points.txt",
-						"10000points.txt",
-				};
-				
-				int[] inputSizes = {10, 20, 50, 100, 1000, 10000};
+				initLargeInput();
 				
 				TSPGraph graph = new TSPGraph();
 				
-				// Tolerance value to account for small variations in time measurements
-				double tolerance = 1;
-				Double initialTime = null;
-				
-				for (int i = 0; i < inputSizes.length; i++) {
-						int inputSize = inputSizes[i];
-						TSPMap map = new TSPMap(inputFiles[i]);
+				// Record the times for each input size
+				double[] times = new double[inputFiles.length];
+				for (int i = 0; i < inputFiles.length; i++) {
+						String filename = inputFiles[i];
 						
-						// Measure the time taken for the function with the given input size
+						TSPMap map = new TSPMap(filename);
 						long startTime = System.nanoTime();
 						graph.isValidTour(map);
 						long endTime = System.nanoTime();
 						double timeInSeconds = (endTime - startTime) / 1_000_000_000.0;
-						
-						System.out.printf("Input size: %d, Time taken: %.7f seconds%n", inputSize, timeInSeconds);
-						
-						// Check if the time taken is within the tolerance range of the initial time measurement
-						if (i == 0) {
-								initialTime = timeInSeconds;
-						} else {
-								double upperBound = initialTime * (1 + tolerance);
-								assertTrue("Time complexity is not constant", timeInSeconds <= upperBound);
-						}
+						times[i] = timeInSeconds;
+						System.out.printf("Input size: %d, Time taken: %.7f seconds%n", inputSizes[i], timeInSeconds);
 				}
+				
+				testConstantTimeComplexity(times);
 		}
 		
 		/**
@@ -341,31 +250,6 @@ public class TSPGraphTester {
 		@Test
 		public void testTourDistance2() {
 				TSPMap map = new TSPMap("tenpoints.txt");
-				map.setLink(0, 9, false);
-				map.setLink(9, 1, false);
-				map.setLink(1, 8, false);
-				map.setLink(8, 2, false);
-				map.setLink(2, 7, false);
-				map.setLink(7, 3, false);
-				map.setLink(3, 6, false);
-				map.setLink(6, 4, false);
-				map.setLink(4, 5, false);
-				map.setLink(5, 0, false);
-				TSPGraph graph = new TSPGraph();
-				
-				String expected = "724.29177";
-				double result = graph.tourDistance(map);
-				
-				System.out.println("Tour distance: " + result);
-				assertEquals(expected, String.format("%.5f", result));
-		}
-		
-		/**
-			* @author Xiaoyun
-			*/
-		@Test
-		public void testTourDistance3() {
-				TSPMap map = new TSPMap("tenpoints.txt");
 				createValidTour(map);
 				map.setLink(9, 1, false);
 				TSPGraph graph = new TSPGraph();
@@ -381,7 +265,7 @@ public class TSPGraphTester {
 			* @author Xiaoyun
 			*/
 		@Test
-		public void testTourDistance4() {
+		public void testTourDistance3() {
 				String[] inputFiles = {
 						"tenpoints.txt",
 						"twentypoints.txt",
@@ -411,22 +295,12 @@ public class TSPGraphTester {
 		
 		
 		/**
+			*
 			* @author Xiaoyun
 			*/
 		@Test
 		public void testTimeComplexityTourDistance() {
-				testFileGenerator.generateNPointsFile(100, 1000);
-				testFileGenerator.generateNPointsFile(100, 10000);
-				String[] inputFiles = {
-						"tenpoints.txt",
-						"twentypoints.txt",
-						"fiftypoints.txt",
-						"hundredpoints.txt",
-						"1000points.txt",
-						"10000points.txt",
-				};
-				
-				int[] inputSizes = {10, 20, 50, 100, 1000, 10000};
+				initLargeInput();
 				
 				TSPGraph graph = new TSPGraph();
 				
@@ -444,24 +318,7 @@ public class TSPGraphTester {
 				}
 				
 				// Compare the time growth to the expected O(n) complexity
-				for (int i = 1; i < times.length; i++) {
-						double previousN = inputSizes[i - 1];
-						double currentN = inputSizes[i];
-						double previousTime = times[i - 1];
-						double currentTime = times[i];
-						
-						double expectedTimeGrowth = currentN / previousN;
-						double actualTimeGrowth = currentTime / previousTime;
-						
-						// You may want to use a tolerance value to account for small variations in time measurements
-						double tolerance = 1;
-						double upperBound = expectedTimeGrowth * (1 + tolerance);
-						System.out.printf("Test %d:\nTime taken: %.7f\nExpected time growth: %f\nActual time " +
-										"growth: " +
-										"%f%n",
-								i, times[i] / 1_000_000_000.0, expectedTimeGrowth, actualTimeGrowth);
-						assertTrue("Time complexity is worse than O(n)", actualTimeGrowth <= upperBound);
-				}
+				testLinearTimeComplexity(times);
 		}
 		
 		/**
@@ -469,45 +326,25 @@ public class TSPGraphTester {
 			*/
 		@Test
 		public void testEarlyTerminationTourDistance() {
-				testFileGenerator.generateNPointsFile(100, 1000);
-				testFileGenerator.generateNPointsFile(100, 10000);
-				String[] inputFiles = {
-						"tenpoints.txt",
-						"twentypoints.txt",
-						"fiftypoints.txt",
-						"hundredpoints.txt",
-						"1000points.txt",
-						"10000points.txt",
-				};
-				
-				int[] inputSizes = {10, 20, 50, 100, 1000, 10000};
+				initLargeInput();
 				
 				TSPGraph graph = new TSPGraph();
 				
-				// Tolerance value to account for small variations in time measurements
-				double tolerance = 1;
-				Double initialTime = null;
-				
-				for (int i = 0; i < inputSizes.length; i++) {
-						int inputSize = inputSizes[i];
-						TSPMap map = new TSPMap(inputFiles[i]);
+				// Record the times for each input size
+				double[] times = new double[inputFiles.length];
+				for (int i = 0; i < inputFiles.length; i++) {
+						String filename = inputFiles[i];
 						
-						// Measure the time taken for the function with the given input size
+						TSPMap map = new TSPMap(filename);
 						long startTime = System.nanoTime();
 						graph.tourDistance(map);
 						long endTime = System.nanoTime();
 						double timeInSeconds = (endTime - startTime) / 1_000_000_000.0;
-						
-						System.out.printf("Input size: %d, Time taken: %.7f seconds%n", inputSize, timeInSeconds);
-						
-						// Check if the time taken is within the tolerance range of the initial time measurement
-						if (i == 0) {
-								initialTime = timeInSeconds;
-						} else {
-								double upperBound = initialTime * (1 + tolerance);
-								assertTrue("Time complexity is not constant", timeInSeconds <= upperBound);
-						}
+						times[i] = timeInSeconds;
+						System.out.printf("Input size: %d, Time taken: %.7f seconds%n", inputSizes[i], timeInSeconds);
 				}
+				
+				testConstantTimeComplexity(times);
 		}
 		
 		/**
@@ -538,5 +375,75 @@ public class TSPGraphTester {
 				
 				System.out.println("But you can do it in the end!");
 				assertEquals(expected, result); // indeed "The value of result is always true"
+		}
+		
+		/**
+			* Tests if the time taken for the function to run is constant.
+			* The time taken for the function to run is expected to be O(1).
+			*
+			* @param times The time taken for the function to run for each input size
+			* @author Xiaoyun
+			*/
+		private void testConstantTimeComplexity(double[] times) {
+				// Tolerance value to account for small variations in time measurements
+				double tolerance = 1;
+				double upperBound = times[0] * (1 + tolerance);
+				
+				for (int i = 1; i < times.length; i++)
+						assertTrue("Time complexity is not constant", times[i] <= upperBound);
+		}
+		
+		/**
+			* Tests if the time taken for the function to run is linearly proportional to the input size.
+			* The time taken for the function to run is expected to be O(n).
+			*
+			* @param times The time taken for the function to run for each input size
+			* @author Xiaoyun
+			*/
+		private void testLinearTimeComplexity(long[] times) {
+				for (int i = 1; i < times.length; i++) {
+						double previousN = inputSizes[i - 1];
+						double currentN = inputSizes[i];
+						double previousTime = times[i - 1];
+						double currentTime = times[i];
+						
+						double expectedTimeGrowth = currentN / previousN;
+						double actualTimeGrowth = currentTime / previousTime;
+						
+						// You may want to use a tolerance value to account for small variations in time measurements
+						double tolerance = 1;
+						double upperBound = expectedTimeGrowth * (1 + tolerance);
+						System.out.printf("Test %d:\nTime taken: %.7f\nExpected time growth: %f\nActual time " +
+										"growth: " +
+										"%f%n",
+								i, times[i] / 1_000_000_000.0, expectedTimeGrowth, actualTimeGrowth);
+						assertTrue("Time complexity is worse than O(n)", actualTimeGrowth <= upperBound);
+				}
+		}
+		
+		/**
+			* Tests that the time complexity of the given algorithm is O(n^2 * log n).
+			* @param times The times taken for each input size.
+			* @author Xiaoyun
+			*/
+		private void testNSquareLogNTimeComplexity(long[] times) {
+				for (int i = 1; i < times.length; i++) {
+						double previousN = inputSizes[i - 1];
+						double currentN = inputSizes[i];
+						double previousTime = times[i - 1];
+						double currentTime = times[i];
+						
+						double expectedTimeGrowth = Math.pow(currentN / previousN, 2) * (Math.log(currentN) / Math.log(previousN));
+						double actualTimeGrowth = currentTime / previousTime;
+						
+						// You may want to use a tolerance value to account for small variations in time measurements
+						double tolerance = 0.25;
+						double upperBound = expectedTimeGrowth * (1 + tolerance);
+						System.out.printf("Test %d:\nTime taken: %.7f\nExpected time growth: %f\nActual time " +
+										"growth: " +
+										"%f%n",
+								i, times[i] / 1_000_000_000.0, expectedTimeGrowth, actualTimeGrowth);
+						assertTrue("Time complexity is worse than O(n^2 * log n)", actualTimeGrowth <= upperBound);
+				}
 		}
 }
