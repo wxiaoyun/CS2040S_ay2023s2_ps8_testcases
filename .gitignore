@@ -1,4 +1,5 @@
 *.class
+commit-message.txt
 IApproximateTSP.java
 StdDraw.java
 TreeMapPriorityQueue.java
