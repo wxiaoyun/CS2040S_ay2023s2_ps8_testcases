@@ -140,15 +140,7 @@ public class TSPGraphTester {
 		@Test
 		public void testValidTour1() {
 				TSPMap map = new TSPMap("tenpoints.txt");
-				map.setLink(0, 1, false);
-				map.setLink(1, 2, false);
-				map.setLink(2, 3, false);
-				map.setLink(3, 4, false);
-				map.setLink(4, 0, false);
-				map.setLink(5, 6, false);
-				map.setLink(6, 7, false);
-				map.setLink(7, 8, false);
-				map.setLink(8, 9, false);
+				createValidTour(map);
 				map.setLink(9, 5, false);
 				TSPGraph graph = new TSPGraph();
 				
@@ -165,16 +157,7 @@ public class TSPGraphTester {
 		@Test
 		public void testValidTour2() {
 				TSPMap map = new TSPMap("tenpoints.txt");
-				map.setLink(0, 1, false);
-				map.setLink(1, 2, false);
-				map.setLink(2, 3, false);
-				map.setLink(3, 4, false);
-				map.setLink(4, 5, false);
-				map.setLink(5, 6, false);
-				map.setLink(6, 7, false);
-				map.setLink(7, 8, false);
-				map.setLink(8, 9, false);
-				map.setLink(9, 0, false);
+				createValidTour(map);
 				map.eraseLink(9, false);
 				TSPGraph graph = new TSPGraph();
 				
@@ -191,15 +174,7 @@ public class TSPGraphTester {
 		@Test
 		public void testValidTour3() {
 				TSPMap map = new TSPMap("tenpoints.txt");
-				map.setLink(0, 1, false);
-				map.setLink(1, 2, false);
-				map.setLink(2, 3, false);
-				map.setLink(3, 4, false);
-				map.setLink(4, 5, false);
-				map.setLink(5, 6, false);
-				map.setLink(6, 7, false);
-				map.setLink(7, 8, false);
-				map.setLink(8, 9, false);
+				createValidTour(map);
 				map.setLink(9, 1, false);
 				TSPGraph graph = new TSPGraph();
 				
@@ -216,15 +191,7 @@ public class TSPGraphTester {
 		@Test
 		public void testValidTour4() {
 				TSPMap map = new TSPMap("tenpoints.txt");
-				map.setLink(1, 2, false);
-				map.setLink(2, 3, false);
-				map.setLink(3, 4, false);
-				map.setLink(4, 5, false);
-				map.setLink(5, 6, false);
-				map.setLink(6, 7, false);
-				map.setLink(7, 8, false);
-				map.setLink(8, 9, false);
-				map.setLink(9, 0, false);
+				createValidTour(map);
 				map.setLink(0, 2, false);
 				TSPGraph graph = new TSPGraph();
 				
@@ -358,16 +325,7 @@ public class TSPGraphTester {
 		@Test
 		public void testTourDistance1() {
 				TSPMap map = new TSPMap("tenpoints.txt");
-				map.setLink(0, 1, false);
-				map.setLink(1, 2, false);
-				map.setLink(2, 3, false);
-				map.setLink(3, 4, false);
-				map.setLink(4, 5, false);
-				map.setLink(5, 6, false);
-				map.setLink(6, 7, false);
-				map.setLink(7, 8, false);
-				map.setLink(8, 9, false);
-				map.setLink(9, 0, false);
+				createValidTour(map);
 				TSPGraph graph = new TSPGraph();
 				
 				String expected = "740.85868";
@@ -408,15 +366,7 @@ public class TSPGraphTester {
 		@Test
 		public void testTourDistance3() {
 				TSPMap map = new TSPMap("tenpoints.txt");
-				map.setLink(0, 1, false);
-				map.setLink(1, 2, false);
-				map.setLink(2, 3, false);
-				map.setLink(3, 4, false);
-				map.setLink(4, 5, false);
-				map.setLink(5, 6, false);
-				map.setLink(6, 7, false);
-				map.setLink(7, 8, false);
-				map.setLink(8, 9, false);
+				createValidTour(map);
 				map.setLink(9, 1, false);
 				TSPGraph graph = new TSPGraph();
 				
