@@ -35,6 +35,24 @@ Sample output of the test file:
 8. You should not be calling MST() or TSP() before isValidTour and tourDistance.
    You are supposed to work with a given graph and not process and modify it.
 
+## Tips
+1. Make sure you have not modified the 2 pre-uploaded files on Coursemology.\
+These are `IApproximateTSP` and `TSPMap`.
+2. The distance is a `double`.\
+When you handle edge weights, make sure you're not assuming it's an integer. This can be particularly important when you compare edge weights.
+3. The link you set is a directed link. \
+If you do `map.setLink(i, j)`, you have set a link from `i` to `j`. `j` is not linked to `i`.
+4. Each node can only direct 1 link.\
+Make sure you're not setting multiple links on one node. Only the most recent link will be remembered.
+5. Is your Priority Queue implementation faulty?\
+If you used your own priority queue, it may be prone to some errors. The provided `TreeMapPriorityQueue` should not have any issues and can be treated as a black box.
+6. Have you remembered to call `MST()` first before `TSP()`?\
+`TSP(map)` must call `MST(map)`, before doing anything. 
+7. Have you accounted for `isValidTour` and `tourDistance` infinite loop cases?\
+Have you accounted for the possible test cases? These include a figure 6 graph, a loop involving all points, a singly linked list, and unconnected nodes as well.
+8. You should not be calling `MST()` or `TSP()` before `isValidTour()` and `tourDistance()`.\
+You are supposed to work with a given graph and not process and modify it.
+
 ## How to Download
 
 ### To download the repository, follow these steps
