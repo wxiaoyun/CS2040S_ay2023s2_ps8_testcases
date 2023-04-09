@@ -4,7 +4,15 @@ This repository is solely meant for NUS students who are taking CS2040S. The pur
 repository is to provide a test file for students' implementation of TSPGraph.java.
 
 1. Note that time complexity tests does not test for the correctness of the algorithm. It only tests for the time complexity of the algorithm.
-2. Time complexity test for MST and TSP can run for a long time. It took 1 minute plus for each of them on my PC. You can comment out the time complexity test for 10000 input size if you want to run the test faster.
+2. Time complexity test for MST and TSP can run for a long time. It took 1 minute plus for each of them on my PC. You can comment out the time complexity test for 10000 input size if you want to run the test faster. However, to better analyze time complexity, you should perform more tests with larger input sizes (the 10000 one) and observe if the time growth trends towards the expected O(n^2 \* log n) complexity.
+
+| Test | Time taken   | Expected time growth | Actual time growth |
+| ---- | ------------ | -------------------- | ------------------ |
+| 1    | 0.016115100  | 5.204120             | 1.118196           |
+| 2    | 0.036478400  | 8.161659             | 2.263616           |
+| 3    | 0.073478600  | 4.708735             | 2.014304           |
+| 4    | 0.886404600  | 150.000000           | 12.063439          |
+| 5    | 74.282491200 | 133.333333           | 83.802015          |
 
 ## How to Download
 

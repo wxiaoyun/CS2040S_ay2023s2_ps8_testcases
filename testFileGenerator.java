@@ -4,6 +4,15 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Random;
 
+/**
+	* This class generates a file with a given number of points.
+	* The file is named as the number of points + "points.txt".
+	* The first line of the file is the maximum coordinate of the points.
+	* The second line of the file is the number of points.
+	* The following lines are the points, each line is a point with the format "x,y".
+	* The points are generated randomly.
+	* @author Wu Xiaoyun
+	*/
 public class testFileGenerator {
 		
 		public static void generateNPointsFile(double maxCoordinate, int numberOfPoints) {

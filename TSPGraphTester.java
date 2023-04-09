@@ -59,8 +59,10 @@ public class TSPGraphTester {
 						// You may want to use a tolerance value to account for small variations in time measurements
 						double tolerance = 0.25;
 						double upperBound = expectedTimeGrowth * (1 + tolerance);
-						System.out.println(String.format("Test %d:\nExpected time growth: %f\nActual time growth: %f",
-								i, expectedTimeGrowth, actualTimeGrowth));
+						System.out.printf("Test %d:\nTime taken: %.9f\nExpected time growth: %f\nActual time " +
+										"growth: " +
+										"%f%n",
+								i, times[i] / 1_000_000_000.0, expectedTimeGrowth, actualTimeGrowth);
 						assertTrue("Time complexity is worse than O(n^2 * log n)", actualTimeGrowth <= upperBound);
 				}
 		}
@@ -110,8 +112,10 @@ public class TSPGraphTester {
 						// You may want to use a tolerance value to account for small variations in time measurements
 						double tolerance = 0.25;
 						double upperBound = expectedTimeGrowth * (1 + tolerance);
-						System.out.println(String.format("Test %d:\nExpected time growth: %f\nActual time growth: %f",
-								i, expectedTimeGrowth, actualTimeGrowth));
+						System.out.printf("Test %d:\nTime taken: %.9f\nExpected time growth: %f\nActual time " +
+										"growth: " +
+										"%f%n",
+								i, times[i] / 1_000_000_000.0, expectedTimeGrowth, actualTimeGrowth);
 						assertTrue("Time complexity is worse than O(n^2 * log n)", actualTimeGrowth <= upperBound);
 				}
 		}
@@ -280,8 +284,10 @@ public class TSPGraphTester {
 						// You may want to use a tolerance value to account for small variations in time measurements
 						double tolerance = 1;
 						double upperBound = expectedTimeGrowth * (1 + tolerance);
-						System.out.println(String.format("Test %d:\nExpected time growth: %f\nActual time growth: %f",
-								i, expectedTimeGrowth, actualTimeGrowth));
+						System.out.printf("Test %d:\nTime taken: %.9f\nExpected time growth: %f\nActual time " +
+										"growth: " +
+										"%f%n",
+								i, times[i] / 1_000_000_000.0, expectedTimeGrowth, actualTimeGrowth);
 						assertTrue("Time complexity is worse than O(n)", actualTimeGrowth <= upperBound);
 				}
 		}
@@ -408,8 +414,10 @@ public class TSPGraphTester {
 						// You may want to use a tolerance value to account for small variations in time measurements
 						double tolerance = 1;
 						double upperBound = expectedTimeGrowth * (1 + tolerance);
-						System.out.println(String.format("Test %d:\nExpected time growth: %f\nActual time growth: %f",
-								i, expectedTimeGrowth, actualTimeGrowth));
+						System.out.printf("Test %d:\nTime taken: %.9f\nExpected time growth: %f\nActual time " +
+										"growth: " +
+										"%f%n",
+								i, times[i] / 1_000_000_000.0, expectedTimeGrowth, actualTimeGrowth);
 						assertTrue("Time complexity is worse than O(n)", actualTimeGrowth <= upperBound);
 				}
 		}
