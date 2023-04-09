@@ -3,19 +3,34 @@ import org.junit.Test;
 import java.util.Random;
 
 public class TSPGraphTester {
+		
+		/**
+			* Creates a valid tour for the given map.
+			* @param map The map to create a valid tour for.
+			* @author Wu Xiaoyun
+			*/
+		private static void createValidTour(TSPMap map) {
+				for (int i	= 0; i < map.getCount(); i++)
+						map.setLink(i, i + 1 < map.getCount() ? i + 1 : 0, false);
+		}
+		
 		/**
 			* @author Wu Xiaoyun
 			*/
 		@Test
 		public void testTimeComplexityMST() {
+				testFileGenerator.generateNPointsFile(100, 1000);
+				testFileGenerator.generateNPointsFile(100, 10000);
 				String[] inputFiles = {
 						"tenpoints.txt",
 						"twentypoints.txt",
 						"fiftypoints.txt",
-						"hundredpoints.txt"
+						"hundredpoints.txt",
+						"1000points.txt",
+						"10000points.txt",
 				};
 				
-				int[] inputSizes = {10, 20, 50, 100};
+				int[] inputSizes = {10, 20, 50, 100, 1000, 10000};
 				
 				TSPGraph graph = new TSPGraph();
 				
@@ -55,14 +70,18 @@ public class TSPGraphTester {
 			*/
 		@Test
 		public void testTimeComplexityTSP() {
+				testFileGenerator.generateNPointsFile(100, 1000);
+				testFileGenerator.generateNPointsFile(100, 10000);
 				String[] inputFiles = {
 						"tenpoints.txt",
 						"twentypoints.txt",
 						"fiftypoints.txt",
-						"hundredpoints.txt"
+						"hundredpoints.txt",
+						"1000points.txt",
+						"10000points.txt",
 				};
 				
-				int[] inputSizes = {10, 20, 50, 100};
+				int[] inputSizes = {10, 20, 50, 100, 1000, 10000};
 				
 				TSPGraph graph = new TSPGraph();
 				
@@ -103,16 +122,16 @@ public class TSPGraphTester {
 		@Test
 		public void testValidTour1() {
 				TSPMap map = new TSPMap("tenpoints.txt");
-				map.setLink(0, 1);
-				map.setLink(1, 2);
-				map.setLink(2, 3);
-				map.setLink(3, 4);
-				map.setLink(4, 0);
-				map.setLink(5, 6);
-				map.setLink(6, 7);
-				map.setLink(7, 8);
-				map.setLink(8, 9);
-				map.setLink(9, 5);
+				map.setLink(0, 1, false);
+				map.setLink(1, 2, false);
+				map.setLink(2, 3, false);
+				map.setLink(3, 4, false);
+				map.setLink(4, 0, false);
+				map.setLink(5, 6, false);
+				map.setLink(6, 7, false);
+				map.setLink(7, 8, false);
+				map.setLink(8, 9, false);
+				map.setLink(9, 5, false);
 				TSPGraph graph = new TSPGraph();
 				
 				boolean expected = false;
@@ -128,17 +147,17 @@ public class TSPGraphTester {
 		@Test
 		public void testValidTour2() {
 				TSPMap map = new TSPMap("tenpoints.txt");
-				map.setLink(0, 1);
-				map.setLink(1, 2);
-				map.setLink(2, 3);
-				map.setLink(3, 4);
-				map.setLink(4, 5);
-				map.setLink(5, 6);
-				map.setLink(6, 7);
-				map.setLink(7, 8);
-				map.setLink(8, 9);
-				map.setLink(9, 0);
-				map.eraseLink(9);
+				map.setLink(0, 1, false);
+				map.setLink(1, 2, false);
+				map.setLink(2, 3, false);
+				map.setLink(3, 4, false);
+				map.setLink(4, 5, false);
+				map.setLink(5, 6, false);
+				map.setLink(6, 7, false);
+				map.setLink(7, 8, false);
+				map.setLink(8, 9, false);
+				map.setLink(9, 0, false);
+				map.eraseLink(9, false);
 				TSPGraph graph = new TSPGraph();
 				
 				boolean expected = false;
@@ -154,16 +173,16 @@ public class TSPGraphTester {
 		@Test
 		public void testValidTour3() {
 				TSPMap map = new TSPMap("tenpoints.txt");
-				map.setLink(0, 1);
-				map.setLink(1, 2);
-				map.setLink(2, 3);
-				map.setLink(3, 4);
-				map.setLink(4, 5);
-				map.setLink(5, 6);
-				map.setLink(6, 7);
-				map.setLink(7, 8);
-				map.setLink(8, 9);
-				map.setLink(9, 1);
+				map.setLink(0, 1, false);
+				map.setLink(1, 2, false);
+				map.setLink(2, 3, false);
+				map.setLink(3, 4, false);
+				map.setLink(4, 5, false);
+				map.setLink(5, 6, false);
+				map.setLink(6, 7, false);
+				map.setLink(7, 8, false);
+				map.setLink(8, 9, false);
+				map.setLink(9, 1, false);
 				TSPGraph graph = new TSPGraph();
 				
 				boolean expected = false;
@@ -179,19 +198,19 @@ public class TSPGraphTester {
 		@Test
 		public void testValidTour4() {
 				TSPMap map = new TSPMap("tenpoints.txt");
-				map.setLink(0, 1);
-				map.setLink(1, 2);
-				map.setLink(2, 3);
-				map.setLink(3, 4);
-				map.setLink(4, 5);
-				map.setLink(5, 6);
-				map.setLink(6, 7);
-				map.setLink(7, 8);
-				map.setLink(8, 9);
-				map.setLink(9, 0);
+				map.setLink(1, 2, false);
+				map.setLink(2, 3, false);
+				map.setLink(3, 4, false);
+				map.setLink(4, 5, false);
+				map.setLink(5, 6, false);
+				map.setLink(6, 7, false);
+				map.setLink(7, 8, false);
+				map.setLink(8, 9, false);
+				map.setLink(9, 0, false);
+				map.setLink(0, 2, false);
 				TSPGraph graph = new TSPGraph();
 				
-				boolean expected = true;
+				boolean expected = false;
 				boolean result = graph.isValidTour(map);
 				
 				System.out.println("This tour is valid: " + result);
@@ -202,18 +221,87 @@ public class TSPGraphTester {
 			* @author Wu Xiaoyun
 			*/
 		@Test
+		public void testValidTour5() {
+				TSPMap map = new TSPMap("tenpoints.txt");
+				createValidTour(map);
+				TSPGraph graph = new TSPGraph();
+				
+				boolean expected = true;
+				boolean result = graph.isValidTour(map);
+				
+				System.out.println("This tour is valid: " + result);
+				assertEquals(expected, result);
+		}
+		
+		
+		/**
+			* @author Wu Xiaoyun
+			*/
+		@Test
+		public void testTimeComplexityIsValidTour() {
+				testFileGenerator.generateNPointsFile(100, 1000);
+				testFileGenerator.generateNPointsFile(100, 10000);
+				String[] inputFiles = {
+						"tenpoints.txt",
+						"twentypoints.txt",
+						"fiftypoints.txt",
+						"hundredpoints.txt",
+						"1000points.txt",
+						"10000points.txt",
+				};
+				
+				int[] inputSizes = {10, 20, 50, 100, 1000, 10000};
+				
+				TSPGraph graph = new TSPGraph();
+				
+				// Record the times for each input size
+				long[] times = new long[inputFiles.length];
+				for (int i = 0; i < inputFiles.length; i++) {
+						String filename = inputFiles[i];
+						
+						TSPMap map = new TSPMap(filename);
+						createValidTour(map);
+						long startTime = System.nanoTime();
+						graph.isValidTour(map);
+						long endTime = System.nanoTime();
+						times[i] = endTime - startTime;
+				}
+				
+				// Compare the time growth to the expected O(n) complexity
+				for (int i = 1; i < times.length; i++) {
+						double previousN = inputSizes[i - 1];
+						double currentN = inputSizes[i];
+						double previousTime = times[i - 1];
+						double currentTime = times[i];
+						
+						double expectedTimeGrowth = currentN / previousN;
+						double actualTimeGrowth = currentTime / previousTime;
+						
+						// You may want to use a tolerance value to account for small variations in time measurements
+						double tolerance = 1;
+						double upperBound = expectedTimeGrowth * (1 + tolerance);
+						System.out.println(String.format("Test %d:\nExpected time growth: %f\nActual time growth: %f",
+								i, expectedTimeGrowth, actualTimeGrowth));
+						assertTrue("Time complexity is worse than O(n)", actualTimeGrowth <= upperBound);
+				}
+		}
+		
+		/**
+			* @author Wu Xiaoyun
+			*/
+		@Test
 		public void testTourDistance1() {
 				TSPMap map = new TSPMap("tenpoints.txt");
-				map.setLink(0, 1);
-				map.setLink(1, 2);
-				map.setLink(2, 3);
-				map.setLink(3, 4);
-				map.setLink(4, 5);
-				map.setLink(5, 6);
-				map.setLink(6, 7);
-				map.setLink(7, 8);
-				map.setLink(8, 9);
-				map.setLink(9, 0);
+				map.setLink(0, 1, false);
+				map.setLink(1, 2, false);
+				map.setLink(2, 3, false);
+				map.setLink(3, 4, false);
+				map.setLink(4, 5, false);
+				map.setLink(5, 6, false);
+				map.setLink(6, 7, false);
+				map.setLink(7, 8, false);
+				map.setLink(8, 9, false);
+				map.setLink(9, 0, false);
 				TSPGraph graph = new TSPGraph();
 				
 				String expected = "740.85868";
@@ -229,16 +317,16 @@ public class TSPGraphTester {
 		@Test
 		public void testTourDistance2() {
 				TSPMap map = new TSPMap("tenpoints.txt");
-				map.setLink(0, 9);
-				map.setLink(9, 1);
-				map.setLink(1, 8);
-				map.setLink(8, 2);
-				map.setLink(2, 7);
-				map.setLink(7, 3);
-				map.setLink(3, 6);
-				map.setLink(6, 4);
-				map.setLink(4, 5);
-				map.setLink(5, 0);
+				map.setLink(0, 9, false);
+				map.setLink(9, 1, false);
+				map.setLink(1, 8, false);
+				map.setLink(8, 2, false);
+				map.setLink(2, 7, false);
+				map.setLink(7, 3, false);
+				map.setLink(3, 6, false);
+				map.setLink(6, 4, false);
+				map.setLink(4, 5, false);
+				map.setLink(5, 0, false);
 				TSPGraph graph = new TSPGraph();
 				
 				String expected = "724.29177";
@@ -254,16 +342,16 @@ public class TSPGraphTester {
 		@Test
 		public void testTourDistance3() {
 				TSPMap map = new TSPMap("tenpoints.txt");
-				map.setLink(0, 1);
-				map.setLink(1, 2);
-				map.setLink(2, 3);
-				map.setLink(3, 4);
-				map.setLink(4, 5);
-				map.setLink(5, 6);
-				map.setLink(6, 7);
-				map.setLink(7, 8);
-				map.setLink(8, 9);
-				map.setLink(9, 1);
+				map.setLink(0, 1, false);
+				map.setLink(1, 2, false);
+				map.setLink(2, 3, false);
+				map.setLink(3, 4, false);
+				map.setLink(4, 5, false);
+				map.setLink(5, 6, false);
+				map.setLink(6, 7, false);
+				map.setLink(7, 8, false);
+				map.setLink(8, 9, false);
+				map.setLink(9, 1, false);
 				TSPGraph graph = new TSPGraph();
 				
 				String expected = "-1.0";
@@ -271,6 +359,59 @@ public class TSPGraphTester {
 				
 				System.out.println("Tour distance: " + result);
 				assertEquals(expected, String.format("%.1f", result));
+		}
+		
+		
+		/**
+			* @author Wu Xiaoyun
+			*/
+		@Test
+		public void testTimeComplexityTourDistance() {
+				testFileGenerator.generateNPointsFile(100, 1000);
+				testFileGenerator.generateNPointsFile(100, 10000);
+				String[] inputFiles = {
+						"tenpoints.txt",
+						"twentypoints.txt",
+						"fiftypoints.txt",
+						"hundredpoints.txt",
+						"1000points.txt",
+						"10000points.txt",
+				};
+				
+				int[] inputSizes = {10, 20, 50, 100, 1000, 10000};
+				
+				TSPGraph graph = new TSPGraph();
+				
+				// Record the times for each input size
+				long[] times = new long[inputFiles.length];
+				for (int i = 0; i < inputFiles.length; i++) {
+						String filename = inputFiles[i];
+						
+						TSPMap map = new TSPMap(filename);
+						createValidTour(map);
+						long startTime = System.nanoTime();
+						graph.tourDistance(map);
+						long endTime = System.nanoTime();
+						times[i] = endTime - startTime;
+				}
+				
+				// Compare the time growth to the expected O(n) complexity
+				for (int i = 1; i < times.length; i++) {
+						double previousN = inputSizes[i - 1];
+						double currentN = inputSizes[i];
+						double previousTime = times[i - 1];
+						double currentTime = times[i];
+						
+						double expectedTimeGrowth = currentN / previousN;
+						double actualTimeGrowth = currentTime / previousTime;
+						
+						// You may want to use a tolerance value to account for small variations in time measurements
+						double tolerance = 1;
+						double upperBound = expectedTimeGrowth * (1 + tolerance);
+						System.out.println(String.format("Test %d:\nExpected time growth: %f\nActual time growth: %f",
+								i, expectedTimeGrowth, actualTimeGrowth));
+						assertTrue("Time complexity is worse than O(n)", actualTimeGrowth <= upperBound);
+				}
 		}
 		
 		/**
@@ -295,7 +436,7 @@ public class TSPGraphTester {
 ;
 				while (result !=	expected) {
 						System.out.printf("You may have failed %d %s.\n", ++count , count == 1 ? "time" : "times");
-						threshold *= 2;
+						threshold *= 3;
 						result = rnd.nextDouble() < threshold;
 				}
 				

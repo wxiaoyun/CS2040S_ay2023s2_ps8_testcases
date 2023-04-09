@@ -1,3 +1,4 @@
+import java.io.File;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -5,8 +6,15 @@ import java.util.Random;
 
 public class testFileGenerator {
 		
-		public static void generateNPointsFile(double maxCoordinate, int numberOfPoints,
-																																									String fileName) {
+		public static void generateNPointsFile(double maxCoordinate, int numberOfPoints) {
+				String fileName = numberOfPoints + "points.txt";
+				// Check if the file already exists
+				File file = new File(fileName);
+				if (file.exists()) {
+						System.out.println(fileName + " already exists.");
+						return;
+				}
+				
 				try {
 						FileWriter fileWriter = new FileWriter(fileName);
 						BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
@@ -37,7 +45,7 @@ public class testFileGenerator {
 		}
 		
 		public static void main(String[] args) {
-				generateNPointsFile(100.0, 1000, "thousandpoints.txt");
-				System.out.println("thousandpoints.txt created.");
+				generateNPointsFile(100.0, 1000);
+				System.out.println(1000 + "points.txt created.");
 		}
 }
