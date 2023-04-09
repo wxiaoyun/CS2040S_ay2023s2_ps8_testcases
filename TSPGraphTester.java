@@ -7,7 +7,7 @@ public class TSPGraphTester {
 		/**
 			* Creates a valid tour for the given map.
 			* @param map The map to create a valid tour for.
-			* @author Wu Xiaoyun
+			* @author Xiaoyun
 			*/
 		private static void createValidTour(TSPMap map) {
 				for (int i	= 0; i < map.getCount(); i++)
@@ -15,7 +15,7 @@ public class TSPGraphTester {
 		}
 		
 		/**
-			* @author Wu Xiaoyun
+			* @author Xiaoyun
 			*/
 		@Test
 		public void testTimeComplexityMST() {
@@ -197,7 +197,7 @@ public class TSPGraphTester {
 		}
 		
 		/**
-			* @author Wu Xiaoyun
+			* @author Xiaoyun
 			*/
 		@Test
 		public void testValidTour4() {
@@ -222,7 +222,7 @@ public class TSPGraphTester {
 		}
 		
 		/**
-			* @author Wu Xiaoyun
+			* @author Xiaoyun
 			*/
 		@Test
 		public void testValidTour5() {
@@ -239,7 +239,7 @@ public class TSPGraphTester {
 		
 		
 		/**
-			* @author Wu Xiaoyun
+			* @author Xiaoyun
 			*/
 		@Test
 		public void testTimeComplexityIsValidTour() {
@@ -293,7 +293,7 @@ public class TSPGraphTester {
 		}
 		
 		/**
-			* @author Wu Xiaoyun
+			* @author Xiaoyun
 			*/
 		@Test
 		public void testTourDistance1() {
@@ -318,7 +318,7 @@ public class TSPGraphTester {
 		}
 		
 		/**
-			* @author Wu Xiaoyun
+			* @author Xiaoyun
 			*/
 		@Test
 		public void testTourDistance2() {
@@ -343,7 +343,7 @@ public class TSPGraphTester {
 		}
 		
 		/**
-			* @author Wu Xiaoyun
+			* @author Xiaoyun
 			*/
 		@Test
 		public void testTourDistance3() {
@@ -369,7 +369,7 @@ public class TSPGraphTester {
 		
 		
 		/**
-			* @author Wu Xiaoyun
+			* @author Xiaoyun
 			*/
 		@Test
 		public void testTimeComplexityTourDistance() {
@@ -431,7 +431,7 @@ public class TSPGraphTester {
 			* Inspired by the coin flipping scene between Tanjiro and Kanao in
 			* Demon	Slayer: Kimetsu no Yaiba. (And screw you uncultured spell checker)
 			*
-			* @author Wu Xiaoyun
+			* @author Xiaoyun
 			*/
 		@Test
 		public void testYouCanDoIt() {
