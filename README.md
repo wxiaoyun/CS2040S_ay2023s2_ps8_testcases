@@ -1,4 +1,6 @@
-# This repository is solely meant for NUS Students who are taking CS2040S. The purpose of this repository is to provide a test file for students' implementation of TSPGraph.java.
+# Problem Set 8: Travelling Salesman Problem
+
+This repository is solely meant for NUS Students who are taking CS2040S. The purpose of this repository is to provide a test file for students' implementation of TSPGraph.java.
 
 ## How to Download
 
